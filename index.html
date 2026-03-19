@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankit Sharma — Sr. Technology Specialist | Python Developer</title>
+    <meta name="description" content="Ankit Sharma — Sr. Technology Specialist at Amdocs, Python Developer, FOSS Consultant with 10+ years of OSS Compliance experience.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Particle Canvas Background -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand">AS</div>
+        <div class="nav-links">
+            <a href="#hero" class="nav-link active" data-section="hero">Home</a>
+            <a href="#about" class="nav-link" data-section="about">About</a>
+            <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+            <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+            <a href="#hobbies" class="nav-link" data-section="hobbies">Hobbies</a>
+            <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+        </div>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge animate-on-scroll">
+                <span class="badge-dot"></span>
+                Available for collaboration
+            </div>
+            <h1 class="hero-title animate-on-scroll">
+                <span class="greeting">Hello, I'm</span>
+                <span class="name-text">Ankit <span class="name-highlight">Sharma</span></span>
+            </h1>
+            <div class="hero-typed animate-on-scroll">
+                <span class="typed-prefix">I am a</span>
+                <span id="typed"></span>
+                <span class="typed-cursor-custom">|</span>
+            </div>
+            <p class="hero-subtitle animate-on-scroll">Crafting elegant solutions at the intersection of Open Source Compliance, Python, and AI</p>
+            <div class="hero-cta animate-on-scroll">
+                <a href="#about" class="btn btn-primary">
+                    <span>Discover More</span>
+                    <i class="fas fa-arrow-down"></i>
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <span>Get in Touch</span>
+                    <i class="fas fa-paper-plane"></i>
+                </a>
+            </div>
+            <div class="hero-stats animate-on-scroll">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="10">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="4">0</span>
+                    <span class="stat-label">Companies</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="5">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Core Skills</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Who I Am</span>
+                <h2 class="section-title">About <span class="highlight">Me</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-image-wrapper animate-on-scroll">
+                    <div class="about-image-frame">
+                        <img src="Mine.png" alt="Ankit Sharma — Sr. Technology Specialist" id="profile-img">
+                        <div class="image-ring"></div>
+                        <div class="image-ring ring-2"></div>
+                    </div>
+                </div>
+                <div class="about-content animate-on-scroll">
+                    <h3 class="about-headline">FOSS Consultant & Technology Specialist</h3>
+                    <p class="about-text">
+                        I am currently working in Pune with <strong>10+ years</strong> of experience in Open Source Software Compliance. 
+                        I've had hands-on experience with industry-leading tools including 
+                        <a href="https://www.synopsys.com/software-integrity/security-testing/software-composition-analysis.html" target="_blank">Blackduck Protex</a>, 
+                        <a href="https://www.synopsys.com/content/dam/synopsys/sig-assets/datasheets/bdhub-ds-ul.pdf" target="_blank">Blackduck Hub</a>, 
+                        <a href="https://www.blackducksoftware.com/" target="_blank">Code Centre</a>, and 
+                        <a href="https://www.fossology.org/" target="_blank">FOSSology</a>.
+                    </p>
+                    <p class="about-text">
+                        I am a <strong>Python Developer</strong> and an intermediate-level <strong>Web Developer</strong>. 
+                        I know AI and can do Vibe Coding. I'm a quick learner, always eager to explore new technologies 💻. 
+                        I believe that <em>Learning will yield Earning</em>.
+                    </p>
+                    <div class="about-info-grid">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <span class="info-label">Location</span>
+                                <span class="info-value">Pune, India</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-briefcase"></i>
+                            <div>
+                                <span class="info-label">Current Role</span>
+                                <span class="info-value">Sr. Technology Specialist</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-building"></i>
+                            <div>
+                                <span class="info-label">Company</span>
+                                <span class="info-value">Amdocs</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <span class="info-label">Email</span>
+                                <a href="mailto:ankit_998877@yahoo.com" class="info-value info-link">ankit_998877@yahoo.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section class="section section-alt" id="experience">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">My Journey</span>
+                <h2 class="section-title">Work <span class="highlight">Experience</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item animate-on-scroll" data-side="left">
+                    <div class="timeline-dot">
+                        <div class="timeline-dot-pulse"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            Aug 2021 — Present
+                        </div>
+                        <h3 class="timeline-role">Sr. Technology Specialist</h3>
+                        <p class="timeline-company">
+                            <i class="fas fa-building"></i>
+                            Amdocs
+                        </p>
+                        <div class="timeline-badge current">Current</div>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll" data-side="right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            May 2019 — Jul 2021
+                        </div>
+                        <h3 class="timeline-role">Member IP Professional</h3>
+                        <p class="timeline-company">
+                            <i class="fas fa-building"></i>
+                            Edgeverve
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll" data-side="left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            Dec 2016 — Apr 2019
+                        </div>
+                        <h3 class="timeline-role">License Management Risk Specialist</h3>
+                        <p class="timeline-company">
+                            <i class="fas fa-building"></i>
+                            Siemens Technology and Services Ltd
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll" data-side="right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            Apr 2014 — Nov 2016
+                        </div>
+                        <h3 class="timeline-role">Solutions Consultant</h3>
+                        <p class="timeline-company">
+                            <i class="fas fa-building"></i>
+                            Lyra Infosystems Pvt Ltd
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">What I Know</span>
+                <h2 class="section-title">My <span class="highlight">Skills</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="skill-name">OSS Compliance</h3>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" data-width="90"></div>
+                    </div>
+                    <span class="skill-percent">90%</span>
+                </div>
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-icon"><i class="fab fa-python"></i></div>
+                    <h3 class="skill-name">Python</h3>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" data-width="75"></div>
+                    </div>
+                    <span class="skill-percent">75%</span>
+                </div>
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                    <h3 class="skill-name">Artificial Intelligence</h3>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" data-width="70"></div>
+                    </div>
+                    <span class="skill-percent">70%</span>
+                </div>
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                    <h3 class="skill-name">Vibe Coding</h3>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" data-width="75"></div>
+                    </div>
+                    <span class="skill-percent">75%</span>
+                </div>
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-icon"><i class="fas fa-code"></i></div>
+                    <h3 class="skill-name">Web Development</h3>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" data-width="70"></div>
+                    </div>
+                    <span class="skill-percent">70%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hobbies Section -->
+    <section class="section section-alt" id="hobbies">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Off the Clock</span>
+                <h2 class="section-title">My <span class="highlight">Hobbies</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="hobbies-grid">
+                <div class="hobby-card animate-on-scroll">
+                    <div class="hobby-icon"><i class="fas fa-book-open"></i></div>
+                    <h3>Novel Reading</h3>
+                    <p>Exploring worlds through words and imagination</p>
+                </div>
+                <div class="hobby-card animate-on-scroll">
+                    <div class="hobby-icon"><i class="fas fa-table-tennis-paddle-ball"></i></div>
+                    <h3>Table Tennis & Cricket</h3>
+                    <p>Staying active with competitive sports</p>
+                </div>
+                <div class="hobby-card animate-on-scroll">
+                    <div class="hobby-icon"><i class="fas fa-pen-nib"></i></div>
+                    <h3>Blogging</h3>
+                    <p>Sharing knowledge and insights with the community</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Let's Connect</span>
+                <h2 class="section-title">Get in <span class="highlight">Touch</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-content animate-on-scroll">
+                <p class="contact-text">Feel free to reach out for collaborations, consultations, or just a friendly chat about Open Source, Python, or AI!</p>
+                <a href="mailto:ankit_998877@yahoo.com" class="btn btn-primary btn-lg" id="contact-btn">
+                    <i class="fas fa-envelope"></i>
+                    <span>ankit_998877@yahoo.com</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo">AS</span>
+                <span class="footer-name">Ankit Sharma</span>
+            </div>
+            <p class="footer-copy">&copy; 2025 Ankit Sharma. Crafted with <span class="heart">❤️</span> All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="particles.js"></script>
+    <script src="animations.js"></script>
+    <script src="typed-init.js"></script>
+</body>
+</html>
