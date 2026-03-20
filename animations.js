@@ -137,13 +137,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     skillBars.forEach(bar => skillObserver.observe(bar));
 
-    // --- Cursor Glow ---
+    // --- Cursor Glow (Smooth Easing) ---
     const cursorGlow = document.getElementById('cursor-glow');
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let cursorX = window.innerWidth / 2, cursorY = window.innerHeight / 2;
+    
     if (cursorGlow && window.innerWidth > 768) {
         document.addEventListener('mousemove', (e) => {
-            cursorGlow.style.left = e.clientX + 'px';
-            cursorGlow.style.top = e.clientY + 'px';
+            mouseX = e.clientX;
+            mouseY = e.clientY;
         });
+        
+        function animateCursor() {
+            // Easing factor
+            cursorX += (mouseX - cursorX) * 0.1;
+            cursorY += (mouseY - cursorY) * 0.1;
+            
+            cursorGlow.style.left = cursorX + 'px';
+            cursorGlow.style.top = cursorY + 'px';
+            
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
     } else if (cursorGlow) {
         cursorGlow.style.display = 'none';
     }
@@ -159,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Tilt effect on hover for cards ---
+    // --- Premium 3D Tilt effect on hover for cards ---
     const tiltCards = document.querySelectorAll('.skill-card, .hobby-card, .timeline-card');
     tiltCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -168,13 +183,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -4;
-            const rotateY = ((x - centerX) / centerX) * 4;
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+            // Increased rotation for a more dynamic and engaging 3D feel
+            const rotateX = ((y - centerY) / centerY) * -8;
+            const rotateY = ((x - centerX) / centerX) * 8;
+            
+            // Adding a dynamic glare or simply scaling the card up
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+            card.style.transition = 'transform 0.1s ease'; // Quick follow for mouse
         });
 
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            card.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)'; // Smooth reset
+        });
+        
+        // Add entry transition
+        card.addEventListener('mouseenter', () => {
+            card.style.transition = 'transform 0.1s ease';
         });
     });
 

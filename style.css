@@ -3,33 +3,33 @@
    =================================== */
 :root {
     /* Colors */
-    --bg-primary: #0a0a1a;
-    --bg-secondary: #0f0f2e;
-    --bg-card: rgba(255, 255, 255, 0.03);
-    --bg-card-hover: rgba(255, 255, 255, 0.07);
-    --bg-glass: rgba(255, 255, 255, 0.05);
-    --bg-glass-strong: rgba(255, 255, 255, 0.08);
+    --bg-primary: #030014;
+    --bg-secondary: #05051f;
+    --bg-card: rgba(255, 255, 255, 0.02);
+    --bg-card-hover: rgba(255, 255, 255, 0.05);
+    --bg-glass: rgba(255, 255, 255, 0.04);
+    --bg-glass-strong: rgba(255, 255, 255, 0.1);
 
-    --accent-primary: #7c3aed;
-    --accent-secondary: #a855f7;
-    --accent-gradient: linear-gradient(135deg, #7c3aed, #ec4899);
-    --accent-gradient-2: linear-gradient(135deg, #6366f1, #8b5cf6, #d946ef);
-    --accent-glow: rgba(124, 58, 237, 0.4);
-    --accent-pink: #ec4899;
-    --accent-blue: #3b82f6;
-    --accent-cyan: #06b6d4;
+    --accent-primary: #0ea5e9;
+    --accent-secondary: #8b5cf6;
+    --accent-gradient: linear-gradient(135deg, #0ea5e9, #6366f1, #d946ef);
+    --accent-gradient-2: linear-gradient(135deg, #ec4899, #8b5cf6, #3b82f6);
+    --accent-glow: rgba(99, 102, 241, 0.5);
+    --accent-pink: #f472b6;
+    --accent-blue: #38bdf8;
+    --accent-cyan: #22d3ee;
 
-    --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
-    --text-accent: #c084fc;
+    --text-primary: #ffffff;
+    --text-secondary: #e2e8f0;
+    --text-muted: #94a3b8;
+    --text-accent: #e879f9;
 
-    --border-subtle: rgba(255, 255, 255, 0.06);
-    --border-glow: rgba(124, 58, 237, 0.3);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-glow: rgba(139, 92, 246, 0.4);
 
     /* Spacing */
-    --section-padding: 120px 0;
-    --container-max: 1100px;
+    --section-padding: 140px 0;
+    --container-max: 1150px;
     --container-padding: 0 24px;
 
     /* Typography */
@@ -43,9 +43,9 @@
 
     /* Border Radius */
     --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    --radius-xl: 28px;
+    --radius-md: 14px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
     --radius-full: 50%;
 }
 
@@ -102,8 +102,63 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ===================================
+   AMBIENT BACKGROUND ORBS
+   =================================== */
+.bg-orbs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     z-index: 0;
     pointer-events: none;
+    filter: blur(80px) opacity(0.6);
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    animation: orbFloat 20s infinite ease-in-out alternate;
+}
+
+.orb-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(14,165,233,0.4) 0%, transparent 70%);
+    top: -10%;
+    left: -10%;
+}
+
+.orb-2 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139,92,246,0.3) 0%, transparent 70%);
+    bottom: -10%;
+    right: -10%;
+    animation-direction: alternate-reverse;
+    animation-duration: 25s;
+}
+
+.orb-3 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(217,70,239,0.2) 0%, transparent 70%);
+    top: 40%;
+    left: 50%;
+    animation-duration: 18s;
+}
+
+@keyframes orbFloat {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(50px, -50px) scale(1.1); }
+    66% { transform: translate(-30px, 40px) scale(0.9); }
+    100% { transform: translate(-50px, -20px) scale(1.05); }
 }
 
 /* ===================================
@@ -111,14 +166,15 @@ img {
    =================================== */
 .cursor-glow {
     position: fixed;
-    width: 600px;
-    height: 600px;
+    width: 800px;
+    height: 800px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
     pointer-events: none;
-    z-index: 1;
+    z-index: 2;
     transform: translate(-50%, -50%);
-    transition: opacity 0.3s;
+    transition: opacity 0.5s;
+    mix-blend-mode: color-dodge;
 }
 
 /* ===================================
@@ -235,31 +291,10 @@ img {
     align-items: center;
     justify-content: center;
     position: relative;
-    z-index: 2;
-    padding: 120px 24px 80px;
+    z-index: 3;
+    padding: 140px 24px 80px;
     text-align: center;
     overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background:
-        radial-gradient(ellipse at 20% 50%, rgba(124, 58, 237, 0.12) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 80%, rgba(59, 130, 246, 0.06) 0%, transparent 50%);
-    z-index: -1;
-    animation: heroGlow 10s ease-in-out infinite alternate;
-}
-
-@keyframes heroGlow {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(-2%, 1%) rotate(1deg); }
-    100% { transform: translate(1%, -1%) rotate(-1deg); }
 }
 
 .hero-content {
@@ -279,6 +314,15 @@ img {
     color: var(--text-secondary);
     margin-bottom: 32px;
     backdrop-filter: blur(10px);
+    transition: all var(--transition-smooth);
+    cursor: default;
+}
+
+.hero-badge:hover {
+    transform: translateY(-3px);
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+    color: var(--text-primary);
 }
 
 .badge-dot {
@@ -320,9 +364,17 @@ img {
 
 .name-highlight {
     background: var(--accent-gradient);
+    background-size: 300% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: textGradient 5s linear infinite;
+}
+
+@keyframes textGradient {
+    0% { background-position: 0% center; }
+    50% { background-position: 150% center; }
+    100% { background-position: 300% center; }
 }
 
 .hero-typed {
@@ -395,12 +447,20 @@ img {
     background: var(--accent-gradient);
     color: #fff;
     box-shadow: 0 4px 20px var(--accent-glow);
+    animation: btnPulse 3s infinite;
+}
+
+@keyframes btnPulse {
+    0% { box-shadow: 0 4px 20px var(--accent-glow); transform: scale(1); }
+    50% { box-shadow: 0 8px 30px var(--accent-glow); transform: scale(1.02); }
+    100% { box-shadow: 0 4px 20px var(--accent-glow); transform: scale(1); }
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 35px var(--accent-glow);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 40px var(--accent-glow);
     color: #fff;
+    animation: none;
 }
 
 .btn-primary::before {
@@ -482,9 +542,10 @@ img {
 }
 
 .stat-divider {
-    width: 1px;
-    height: 40px;
-    background: var(--border-subtle);
+    width: 2px;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, var(--accent-primary), transparent);
+    box-shadow: 0 0 10px var(--accent-glow);
 }
 
 /* ===================================
@@ -622,39 +683,43 @@ img {
     object-fit: cover;
     position: relative;
     z-index: 2;
-    border: 3px solid var(--border-subtle);
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 0 0 40px rgba(14, 165, 233, 0.4), inset 0 0 20px rgba(139, 92, 246, 0.4);
     transition: all var(--transition-smooth);
 }
 
 .about-image-frame:hover img {
-    border-color: var(--accent-primary);
-    transform: scale(1.03);
+    border-color: rgba(217, 70, 239, 0.5);
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 0 60px rgba(139, 92, 246, 0.6), inset 0 0 30px rgba(14, 165, 233, 0.5);
 }
 
 .image-ring {
     position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
     border-radius: var(--radius-full);
-    border: 1px solid var(--border-glow);
-    animation: ringRotate 8s linear infinite;
+    border: 2px dashed rgba(14, 165, 233, 0.4);
+    animation: ringRotate 15s linear infinite;
 }
 
 .ring-2 {
-    top: -20px;
-    left: -20px;
-    right: -20px;
-    bottom: -20px;
-    border-color: rgba(236, 72, 153, 0.15);
-    animation-duration: 12s;
+    top: -24px;
+    left: -24px;
+    right: -24px;
+    bottom: -24px;
+    border: 2px dotted rgba(217, 70, 239, 0.3);
+    animation-duration: 20s;
     animation-direction: reverse;
 }
 
 @keyframes ringRotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.05); }
+    100% { transform: rotate(360deg) scale(1); }
 }
 
 .about-headline {
