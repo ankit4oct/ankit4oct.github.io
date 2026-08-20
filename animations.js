@@ -1,7 +1,3 @@
-/* ===================================
-   Animations — scroll, nav, counters, skills
-   =================================== */
-
 document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     const revealObserver = new IntersectionObserver(
@@ -12,32 +8,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         },
-        { threshold: 0.12, rootMargin: '0px 0px -36px 0px' }
+        { threshold: 0.08, rootMargin: '0px 0px -24px 0px' }
     );
 
     animatedElements.forEach((el) => revealObserver.observe(el));
 
     const navbar = document.getElementById('navbar');
     const backToTop = document.getElementById('back-to-top');
-    const hero = document.getElementById('hero');
 
     function updateNavChrome() {
         const scrollY = window.scrollY;
-        const heroBottom = hero ? hero.offsetHeight - 80 : 0;
 
-        if (scrollY > 40) {
+        if (scrollY > 24) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
 
-        if (scrollY < heroBottom) {
-            navbar.classList.add('on-hero');
-        } else {
-            navbar.classList.remove('on-hero');
-        }
-
-        if (scrollY > 600) {
+        if (scrollY > 500) {
             backToTop.classList.add('visible');
         } else {
             backToTop.classList.remove('visible');
@@ -76,18 +64,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const navToggle = document.getElementById('nav-toggle');
-    const navLinksEl = document.querySelector('.nav-links');
+    const navLinksEl = document.getElementById('nav-links');
 
     if (navToggle && navLinksEl) {
         navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navLinksEl.classList.toggle('open');
+            const open = navLinksEl.classList.toggle('open');
+            navToggle.classList.toggle('active', open);
+            navToggle.setAttribute('aria-expanded', String(open));
         });
 
         document.querySelectorAll('.nav-link').forEach((link) => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
                 navLinksEl.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
             });
         });
     }
@@ -95,29 +85,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const statNumbers = document.querySelectorAll('.stat-number');
     let countersAnimated = false;
 
+    function runCounters() {
+        if (countersAnimated) return;
+        countersAnimated = true;
+        statNumbers.forEach((num) => {
+            const target = parseInt(num.getAttribute('data-target'), 10);
+            animateCounter(num, target);
+        });
+    }
+
     const counterObserver = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting && !countersAnimated) {
-                    countersAnimated = true;
-                    statNumbers.forEach((num) => {
-                        const target = parseInt(num.getAttribute('data-target'), 10);
-                        animateCounter(num, target);
-                    });
-                }
+                if (entry.isIntersecting) runCounters();
             });
         },
-        { threshold: 0.3 }
+        { threshold: 0.15 }
     );
 
-    if (statNumbers.length > 0) {
-        const statsWrapper = statNumbers[0].closest('.about-aside');
-        if (statsWrapper) counterObserver.observe(statsWrapper);
+    const statsWrapper = document.getElementById('stats-row');
+    if (statsWrapper) {
+        counterObserver.observe(statsWrapper);
+    } else {
+        runCounters();
     }
 
     function animateCounter(el, target) {
         let current = 0;
-        const increment = target / 50;
+        const increment = Math.max(target / 40, 0.25);
         const timer = setInterval(() => {
             current += increment;
             if (current >= target) {
@@ -125,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearInterval(timer);
             }
             el.textContent = Math.floor(current);
-        }, 28);
+        }, 24);
     }
 
     const skillBars = document.querySelectorAll('.skill-bar-fill');
@@ -138,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         },
-        { threshold: 0.35 }
+        { threshold: 0.25 }
     );
 
     skillBars.forEach((bar) => skillObserver.observe(bar));
