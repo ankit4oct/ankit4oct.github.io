@@ -15,10 +15,10 @@
     --line-strong: rgba(11, 20, 32, 0.18);
     --hero-veil: linear-gradient(
         105deg,
-        rgba(8, 16, 28, 0.82) 0%,
-        rgba(8, 16, 28, 0.55) 42%,
-        rgba(8, 16, 28, 0.25) 70%,
-        rgba(8, 16, 28, 0.15) 100%
+        rgba(8, 14, 24, 0.88) 0%,
+        rgba(8, 14, 24, 0.62) 38%,
+        rgba(8, 14, 24, 0.28) 65%,
+        rgba(8, 14, 24, 0.18) 100%
     );
 
     --font-display: "Syne", sans-serif;
@@ -500,13 +500,13 @@ ol {
 
 .about-meta dd {
     font-size: 0.98rem;
-    font-weight: 560;
+    font-weight: 600;
     color: var(--ink);
 }
 
 .about-meta a {
     text-decoration: none;
-    font-weight: 560;
+    font-weight: 600;
 }
 
 .about-meta a:hover {
@@ -584,7 +584,7 @@ ol {
 .timeline-role {
     font-family: var(--font-display);
     font-size: 1.2rem;
-    font-weight: 650;
+    font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--ink);
     margin-bottom: 0.25rem;
@@ -720,7 +720,7 @@ ol {
 .hobby-item h3 {
     font-family: var(--font-display);
     font-size: 1.25rem;
-    font-weight: 650;
+    font-weight: 700;
     letter-spacing: -0.02em;
     margin-bottom: 0.3rem;
     color: var(--ink);
@@ -886,6 +886,19 @@ ol {
 
     .nav-toggle {
         display: flex;
+    }
+
+    .hero-photo {
+        top: 38%;
+        width: max(120vw, 120vh);
+        height: max(120vw, 120vh);
+        object-position: center 12%;
+        transform: translate(-50%, -50%) scale(1.2);
+        animation: none;
+    }
+
+    .hero-photo-fill {
+        filter: blur(36px) saturate(1.1) brightness(0.65);
     }
 
     .hero-content {
