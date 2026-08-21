@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Ankit Sharma — Sr. Technology Specialist | Python Developer</title>
     <meta name="description" content="Ankit Sharma — Sr. Technology Specialist at Amdocs, Python Developer, FOSS Consultant with 10+ years of OSS Compliance experience.">
+    <meta name="color-scheme" content="light dark">
+    <script>
+        (function () {
+            var saved = localStorage.getItem('theme');
+            var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+            document.documentElement.classList.add('js');
+        })();
+    </script>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
@@ -40,6 +48,10 @@
             <a href="#hobbies" class="nav-link" data-section="hobbies"><span>Hobbies</span></a>
             <a href="#contact" class="nav-link" data-section="contact"><span>Contact</span></a>
         </div>
+        <button class="theme-toggle magnetic" id="theme-toggle" type="button" aria-label="Switch to dark mode">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+            <i class="fas fa-sun" aria-hidden="true"></i>
+        </button>
         <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
