@@ -8,19 +8,37 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
+    <div class="grain" aria-hidden="true"></div>
+
+    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+    <div class="preloader" id="preloader" aria-hidden="true">
+        <span class="preloader-mark">AS</span>
+        <span class="preloader-bar"></span>
+    </div>
+
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
     <nav class="navbar" id="navbar">
-        <a href="#hero" class="nav-brand">AS</a>
+        <a href="#hero" class="nav-brand magnetic" data-cursor="dot">AS</a>
+        <div class="nav-index" id="nav-index" aria-hidden="true">
+            <span id="nav-index-current">01</span>
+            <span class="nav-index-slash">/</span>
+            <span>05</span>
+        </div>
         <div class="nav-links" id="nav-links">
-            <a href="#about" class="nav-link" data-section="about">About</a>
-            <a href="#experience" class="nav-link" data-section="experience">Experience</a>
-            <a href="#skills" class="nav-link" data-section="skills">Skills</a>
-            <a href="#hobbies" class="nav-link" data-section="hobbies">Hobbies</a>
-            <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+            <a href="#about" class="nav-link" data-section="about"><span>About</span></a>
+            <a href="#experience" class="nav-link" data-section="experience"><span>Experience</span></a>
+            <a href="#skills" class="nav-link" data-section="skills"><span>Skills</span></a>
+            <a href="#hobbies" class="nav-link" data-section="hobbies"><span>Hobbies</span></a>
+            <a href="#contact" class="nav-link" data-section="contact"><span>Contact</span></a>
         </div>
         <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -28,35 +46,76 @@
     </nav>
 
     <section class="hero" id="hero">
-        <div class="hero-inner">
-            <div class="hero-portrait animate-in">
-                <div class="portrait-ring" aria-hidden="true"></div>
-                <img src="Mine.png" alt="Portrait of Ankit Sharma">
-            </div>
-            <div class="hero-copy">
-                <p class="hero-kicker animate-in">Sr. Technology Specialist · Pune</p>
-                <h1 class="hero-title animate-in">Ankit Sharma</h1>
-                <p class="hero-lead animate-in">
-                    Open source compliance, Python, and AI — elegant solutions for complex software ecosystems.
-                </p>
-                <div class="hero-cta animate-in">
-                    <a href="#about" class="btn btn-primary">Explore work</a>
-                    <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        <h1 class="hero-name" aria-label="Ankit Sharma">
+            <span class="hero-line" aria-hidden="true">
+                <span class="char" style="--i:0">A</span>
+                <span class="char" style="--i:1">N</span>
+                <span class="char" style="--i:2">K</span>
+                <span class="char" style="--i:3">I</span>
+                <span class="char" style="--i:4">T</span>
+            </span>
+        </h1>
+
+        <div class="hero-mid">
+            <div class="hero-portrait-stage" data-parallax>
+                <div class="hero-portrait">
+                    <img src="Mine.png" alt="Portrait of Ankit Sharma" width="640" height="640">
                 </div>
+            </div>
+            <div class="marquee" aria-hidden="true">
+                <div class="marquee-track">
+                    <span>OSS Compliance</span><span>Python</span><span>Artificial Intelligence</span><span>FOSS Consultant</span><span>Web Development</span><span>Vibe Coding</span>
+                    <span>OSS Compliance</span><span>Python</span><span>Artificial Intelligence</span><span>FOSS Consultant</span><span>Web Development</span><span>Vibe Coding</span>
+                </div>
+            </div>
+        </div>
+
+        <p class="hero-name hero-name-last" aria-hidden="true">
+            <span class="hero-line">
+                <span class="char" style="--i:5">S</span>
+                <span class="char" style="--i:6">H</span>
+                <span class="char" style="--i:7">A</span>
+                <span class="char" style="--i:8">R</span>
+                <span class="char" style="--i:9">M</span>
+                <span class="char" style="--i:10">A</span>
+            </span>
+        </p>
+
+        <div class="hero-foot">
+            <p class="hero-kicker">
+                Sr. Technology Specialist
+                <span class="hero-dot">·</span>
+                Pune
+            </p>
+            <p class="hero-lead">
+                Open source compliance, Python, and AI —
+                <em>elegant solutions</em> for complex software ecosystems.
+            </p>
+            <div class="hero-cta">
+                <a href="#about" class="btn btn-primary magnetic" data-cursor="view">
+                    <span>Explore work</span>
+                    <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                </a>
+                <a href="#contact" class="btn btn-ghost magnetic" data-cursor="view">
+                    <span>Get in touch</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <section class="section" id="about">
+    <section class="section" id="about" data-index="01">
         <div class="section-container">
-            <header class="section-header animate-on-scroll">
-                <span class="section-kicker">Who I am</span>
-                <h2 class="section-title">About</h2>
-                <p class="section-desc">FOSS consultant and technology specialist with a decade in open source compliance.</p>
+            <header class="split-head reveal">
+                <span class="split-left">Ab</span>
+                <span class="split-kicker">Who I am</span>
+                <span class="split-right">out</span>
             </header>
 
             <div class="about-layout">
-                <div class="about-copy animate-on-scroll">
+                <div class="about-copy reveal">
+                    <p class="about-lede">
+                        FOSS consultant and technology specialist with a decade in open source compliance.
+                    </p>
                     <p>
                         I work in Pune with <strong>10+ years</strong> of experience in Open Source Software Compliance,
                         hands-on with
@@ -72,108 +131,130 @@
                     </p>
                 </div>
 
-                <ul class="about-meta animate-on-scroll">
-                    <li>
-                        <i class="fas fa-location-dot" aria-hidden="true"></i>
-                        <div>
-                            <span class="meta-label">Location</span>
-                            <span class="meta-value">Pune, India</span>
-                        </div>
+                <ul class="about-meta">
+                    <li class="reveal" style="--d:0">
+                        <span class="meta-label">Location</span>
+                        <span class="meta-value">Pune, India</span>
                     </li>
-                    <li>
-                        <i class="fas fa-briefcase" aria-hidden="true"></i>
-                        <div>
-                            <span class="meta-label">Role</span>
-                            <span class="meta-value">Sr. Technology Specialist</span>
-                        </div>
+                    <li class="reveal" style="--d:1">
+                        <span class="meta-label">Role</span>
+                        <span class="meta-value">Sr. Technology Specialist</span>
                     </li>
-                    <li>
-                        <i class="fas fa-building" aria-hidden="true"></i>
-                        <div>
-                            <span class="meta-label">Company</span>
-                            <span class="meta-value">Amdocs</span>
-                        </div>
+                    <li class="reveal" style="--d:2">
+                        <span class="meta-label">Company</span>
+                        <span class="meta-value">Amdocs</span>
                     </li>
-                    <li>
-                        <i class="fas fa-envelope" aria-hidden="true"></i>
-                        <div>
-                            <span class="meta-label">Email</span>
-                            <a class="meta-value" href="mailto:ankit_998877@yahoo.com">ankit_998877@yahoo.com</a>
-                        </div>
+                    <li class="reveal" style="--d:3">
+                        <span class="meta-label">Email</span>
+                        <a class="meta-value" href="mailto:ankit_998877@yahoo.com" data-cursor="view">ankit_998877@yahoo.com</a>
                     </li>
                 </ul>
             </div>
 
-            <div class="stats-row animate-on-scroll" id="stats-row">
-                <div class="stat-card">
-                    <span class="stat-number" data-target="10">10</span><span class="stat-suffix">+</span>
+            <div class="stats-row" id="stats-row">
+                <div class="stat-card reveal" style="--d:0">
+                    <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
                     <span class="stat-label">Years experience</span>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-number" data-target="4">4</span>
+                <div class="stat-card reveal" style="--d:1">
+                    <span class="stat-number" data-target="4">0</span>
                     <span class="stat-label">Companies</span>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-number" data-target="5">5</span><span class="stat-suffix">+</span>
+                <div class="stat-card reveal" style="--d:2">
+                    <span class="stat-number" data-target="5">0</span><span class="stat-suffix">+</span>
                     <span class="stat-label">Core skills</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section section-tint" id="experience">
+    <section class="section section-ink" id="experience" data-index="02">
         <div class="section-container">
-            <header class="section-header animate-on-scroll">
-                <span class="section-kicker">Career</span>
-                <h2 class="section-title">Experience</h2>
-                <p class="section-desc">A path through license risk, IP, and technology leadership.</p>
+            <header class="split-head split-head-light reveal">
+                <span class="split-left">Then</span>
+                <span class="split-kicker">Career</span>
+                <span class="split-right">Now</span>
             </header>
 
-            <ol class="timeline">
-                <li class="timeline-item animate-on-scroll">
-                    <time class="timeline-date" datetime="2021-08">Aug 2021 — Present</time>
-                    <div class="timeline-body">
-                        <h3 class="timeline-role">Sr. Technology Specialist</h3>
-                        <p class="timeline-company">Amdocs</p>
-                        <span class="timeline-status">Current</span>
+            <p class="section-intro reveal">
+                A path through license risk, IP, and technology leadership —
+                from consultancy to senior specialist.
+            </p>
+
+            <ol class="journey">
+                <li class="journey-item reveal" style="--d:0">
+                    <div class="journey-link">
+                        <span class="journey-years">2014 — 2016</span>
+                        <span class="journey-main">
+                            <span class="journey-company">Lyra Infosystems</span>
+                            <span class="journey-role">Solutions Consultant</span>
+                        </span>
+                        <span class="journey-meta">
+                            <span class="journey-duration">2 yrs</span>
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </span>
                     </div>
                 </li>
-                <li class="timeline-item animate-on-scroll">
-                    <time class="timeline-date" datetime="2019-05">May 2019 — Jul 2021</time>
-                    <div class="timeline-body">
-                        <h3 class="timeline-role">Member IP Professional</h3>
-                        <p class="timeline-company">Edgeverve</p>
+                <li class="journey-item reveal" style="--d:1">
+                    <div class="journey-link">
+                        <span class="journey-years">2016 — 2019</span>
+                        <span class="journey-main">
+                            <span class="journey-company">Siemens</span>
+                            <span class="journey-role">License Management Risk Specialist</span>
+                        </span>
+                        <span class="journey-meta">
+                            <span class="journey-duration">2 yrs</span>
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </span>
                     </div>
                 </li>
-                <li class="timeline-item animate-on-scroll">
-                    <time class="timeline-date" datetime="2016-12">Dec 2016 — Apr 2019</time>
-                    <div class="timeline-body">
-                        <h3 class="timeline-role">License Management Risk Specialist</h3>
-                        <p class="timeline-company">Siemens Technology and Services Ltd</p>
+                <li class="journey-item reveal" style="--d:2">
+                    <div class="journey-link">
+                        <span class="journey-years">2019 — 2021</span>
+                        <span class="journey-main">
+                            <span class="journey-company">Edgeverve</span>
+                            <span class="journey-role">Member IP Professional</span>
+                        </span>
+                        <span class="journey-meta">
+                            <span class="journey-duration">2 yrs</span>
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </span>
                     </div>
                 </li>
-                <li class="timeline-item animate-on-scroll">
-                    <time class="timeline-date" datetime="2014-04">Apr 2014 — Nov 2016</time>
-                    <div class="timeline-body">
-                        <h3 class="timeline-role">Solutions Consultant</h3>
-                        <p class="timeline-company">Lyra Infosystems Pvt Ltd</p>
+                <li class="journey-item is-current reveal" style="--d:3">
+                    <div class="journey-link">
+                        <span class="journey-years">2021 — Now</span>
+                        <span class="journey-main">
+                            <span class="journey-company">Amdocs</span>
+                            <span class="journey-role">Sr. Technology Specialist</span>
+                        </span>
+                        <span class="journey-meta">
+                            <span class="journey-status">Current</span>
+                            <span class="journey-duration">5 yrs</span>
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </span>
                     </div>
                 </li>
             </ol>
         </div>
     </section>
 
-    <section class="section" id="skills">
+    <section class="section" id="skills" data-index="03">
         <div class="section-container">
-            <header class="section-header animate-on-scroll">
-                <span class="section-kicker">Craft</span>
-                <h2 class="section-title">Skills</h2>
-                <p class="section-desc">Where I spend my craft — compliance, code, and emerging AI.</p>
+            <header class="split-head reveal">
+                <span class="split-left">Sk</span>
+                <span class="split-kicker">Craft</span>
+                <span class="split-right">ills</span>
             </header>
 
+            <p class="section-intro reveal">
+                Where I spend my craft — compliance, code, and emerging AI.
+            </p>
+
             <ul class="skills-list">
-                <li class="skill-row animate-on-scroll">
+                <li class="skill-row reveal" style="--d:0">
                     <div class="skill-head">
+                        <span class="skill-index">01</span>
                         <span class="skill-name">OSS Compliance</span>
                         <span class="skill-percent">90%</span>
                     </div>
@@ -181,8 +262,9 @@
                         <div class="skill-bar-fill" data-width="90"></div>
                     </div>
                 </li>
-                <li class="skill-row animate-on-scroll">
+                <li class="skill-row reveal" style="--d:1">
                     <div class="skill-head">
+                        <span class="skill-index">02</span>
                         <span class="skill-name">Python</span>
                         <span class="skill-percent">75%</span>
                     </div>
@@ -190,8 +272,9 @@
                         <div class="skill-bar-fill" data-width="75"></div>
                     </div>
                 </li>
-                <li class="skill-row animate-on-scroll">
+                <li class="skill-row reveal" style="--d:2">
                     <div class="skill-head">
+                        <span class="skill-index">03</span>
                         <span class="skill-name">Artificial Intelligence</span>
                         <span class="skill-percent">70%</span>
                     </div>
@@ -199,8 +282,9 @@
                         <div class="skill-bar-fill" data-width="70"></div>
                     </div>
                 </li>
-                <li class="skill-row animate-on-scroll">
+                <li class="skill-row reveal" style="--d:3">
                     <div class="skill-head">
+                        <span class="skill-index">04</span>
                         <span class="skill-name">Vibe Coding</span>
                         <span class="skill-percent">75%</span>
                     </div>
@@ -208,8 +292,9 @@
                         <div class="skill-bar-fill" data-width="75"></div>
                     </div>
                 </li>
-                <li class="skill-row animate-on-scroll">
+                <li class="skill-row reveal" style="--d:4">
                     <div class="skill-head">
+                        <span class="skill-index">05</span>
                         <span class="skill-name">Web Development</span>
                         <span class="skill-percent">70%</span>
                     </div>
@@ -219,74 +304,83 @@
                 </li>
             </ul>
 
-            <p class="skills-typed animate-on-scroll">
+            <p class="skills-typed reveal">
                 I am a <span id="typed"></span><span class="typed-cursor" aria-hidden="true">|</span>
             </p>
         </div>
     </section>
 
-    <section class="section section-tint" id="hobbies">
+    <section class="section section-warm" id="hobbies" data-index="04">
         <div class="section-container">
-            <header class="section-header animate-on-scroll">
-                <span class="section-kicker">Off the clock</span>
-                <h2 class="section-title">Hobbies</h2>
-                <p class="section-desc">What fills the hours beyond the keyboard.</p>
+            <header class="split-head reveal">
+                <span class="split-left">Off</span>
+                <span class="split-kicker">Hours</span>
+                <span class="split-right">clock</span>
             </header>
 
+            <p class="section-intro reveal">What fills the hours beyond the keyboard.</p>
+
             <ul class="hobbies-list">
-                <li class="hobby-item animate-on-scroll">
+                <li class="hobby-item reveal" style="--d:0">
                     <span class="hobby-index">01</span>
-                    <div>
+                    <div class="hobby-copy">
                         <h3>Novel reading</h3>
                         <p>Exploring worlds through words and imagination</p>
                     </div>
+                    <span class="hobby-mark" aria-hidden="true">Read</span>
                 </li>
-                <li class="hobby-item animate-on-scroll">
+                <li class="hobby-item reveal" style="--d:1">
                     <span class="hobby-index">02</span>
-                    <div>
+                    <div class="hobby-copy">
                         <h3>Table tennis &amp; cricket</h3>
                         <p>Staying active with competitive sports</p>
                     </div>
+                    <span class="hobby-mark" aria-hidden="true">Play</span>
                 </li>
-                <li class="hobby-item animate-on-scroll">
+                <li class="hobby-item reveal" style="--d:2">
                     <span class="hobby-index">03</span>
-                    <div>
+                    <div class="hobby-copy">
                         <h3>Blogging</h3>
                         <p>Sharing knowledge and insights with the community</p>
                     </div>
+                    <span class="hobby-mark" aria-hidden="true">Write</span>
                 </li>
             </ul>
         </div>
     </section>
 
-    <section class="section contact-section" id="contact">
+    <section class="section contact-section" id="contact" data-index="05">
         <div class="section-container">
-            <header class="section-header animate-on-scroll">
-                <span class="section-kicker">Contact</span>
-                <h2 class="section-title">Let’s connect</h2>
-                <p class="section-desc">
-                    Collaborations, consultations, or a chat about open source, Python, or AI.
-                </p>
+            <header class="split-head reveal">
+                <span class="split-left">Co</span>
+                <span class="split-kicker">Let’s talk</span>
+                <span class="split-right">ntact</span>
             </header>
-            <div class="contact-action animate-on-scroll">
-                <a href="mailto:ankit_998877@yahoo.com" class="btn btn-primary btn-lg" id="contact-btn">
-                    ankit_998877@yahoo.com
-                </a>
-            </div>
+
+            <p class="contact-lede reveal">
+                Collaborations, consultations, or a chat about open source, Python, or AI.
+            </p>
+
+            <a href="mailto:ankit_998877@yahoo.com" class="contact-mail magnetic reveal" data-cursor="view" id="contact-btn">
+                <span>ankit_998877@yahoo.com</span>
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
         </div>
     </section>
 
     <footer class="footer" id="footer">
+        <p class="footer-wordmark" aria-hidden="true">AnkitSharma</p>
         <div class="footer-content">
             <span class="footer-brand">Ankit Sharma</span>
             <p class="footer-copy">&copy; 2026 Ankit Sharma. All rights reserved.</p>
         </div>
     </footer>
 
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <button class="back-to-top magnetic" id="back-to-top" aria-label="Back to top" data-cursor="view">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="animations.js"></script>
     <script src="typed-init.js"></script>
