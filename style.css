@@ -276,15 +276,19 @@ html.js .preloader {
     padding: 0.95rem var(--gutter);
     padding-top: max(0.95rem, env(safe-area-inset-top));
     background: transparent;
-    transition: background var(--smooth), border-color var(--smooth),
-        box-shadow var(--smooth);
+    mix-blend-mode: difference;
+    color: #fff;
+    transition: background var(--smooth);
 }
 
-.navbar.scrolled {
-    background: rgba(239, 232, 220, 0.82);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--line);
-    box-shadow: 0 10px 30px rgba(20, 17, 14, 0.04);
+.navbar.menu-open {
+    mix-blend-mode: normal;
+    background: var(--surface);
+    color: var(--ink);
+}
+
+.navbar.scrolled:not(.menu-open) {
+    background: transparent;
 }
 
 .nav-brand {
@@ -292,13 +296,14 @@ html.js .preloader {
     font-size: 1.15rem;
     font-weight: 800;
     letter-spacing: -0.04em;
-    color: var(--ink);
+    color: inherit;
     text-decoration: none;
     z-index: 2;
 }
 
 .nav-brand:hover {
-    color: var(--accent);
+    color: inherit;
+    opacity: 0.7;
 }
 
 .nav-index {
@@ -306,7 +311,8 @@ html.js .preloader {
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.12em;
-    color: var(--muted);
+    color: inherit;
+    opacity: 0.7;
     margin-right: auto;
     margin-left: 1.25rem;
 }
@@ -324,25 +330,17 @@ html.js .preloader {
 .nav-link {
     font-size: 0.82rem;
     font-weight: 500;
-    color: var(--ink-soft);
+    color: inherit;
     text-decoration: none;
     padding: 0.45rem 0.75rem;
-    overflow: hidden;
-}
-
-.nav-link span {
-    display: inline-block;
-    position: relative;
-    transition: transform 0.45s var(--ease);
-}
-
-.nav-link span::after {
-    content: attr(data-text);
+    opacity: 0.72;
+    transition: opacity var(--fast);
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--accent);
+    color: inherit;
+    opacity: 1;
 }
 
 .nav-toggle {
@@ -359,7 +357,7 @@ html.js .preloader {
 .nav-toggle span {
     width: 22px;
     height: 2px;
-    background: var(--ink);
+    background: currentColor;
     transition: transform var(--fast), opacity var(--fast);
 }
 
@@ -457,7 +455,7 @@ body.js.is-ready .hero-line .char {
     overflow: hidden;
     position: relative;
     box-shadow:
-        0 0 0 8px var(--bg),
+        0 0 0 12px var(--bg),
         0 28px 50px rgba(20, 17, 14, 0.22);
 }
 
@@ -701,7 +699,7 @@ body.js.is-ready .hero-foot {
 }
 
 .section-ink .section-intro {
-    color: rgba(244, 238, 228, 0.62);
+    color: rgba(244, 238, 228, 0.72);
 }
 
 /* ===================================
@@ -807,14 +805,6 @@ body.js.is-ready .hero-foot {
     flex-direction: column;
 }
 
-.journey-item {
-    border-top: 1px solid var(--ink-line);
-}
-
-.journey-item:last-child {
-    border-bottom: 1px solid var(--ink-line);
-}
-
 .journey-link {
     display: grid;
     grid-template-columns: 8.5rem 1fr auto;
@@ -823,7 +813,34 @@ body.js.is-ready .hero-foot {
     padding: 1.7rem 0.2rem;
     color: inherit;
     text-decoration: none;
-    transition: padding var(--smooth), background var(--smooth);
+    position: relative;
+    z-index: 1;
+    transition: padding var(--smooth);
+}
+
+.journey-item {
+    position: relative;
+    border-top: 1px solid var(--ink-line);
+}
+
+.journey-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(244, 238, 228, 0.05);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.55s var(--ease);
+    pointer-events: none;
+}
+
+.journey-item:hover::before,
+.journey-item.is-current::before {
+    transform: scaleX(1);
+}
+
+.journey-item:last-child {
+    border-bottom: 1px solid var(--ink-line);
 }
 
 .journey-years {
@@ -1137,6 +1154,7 @@ body.js.is-ready .hero-foot {
     opacity: 0;
     visibility: hidden;
     transform: translateY(0.6rem);
+    box-shadow: 0 10px 24px rgba(20, 17, 14, 0.14);
     transition: opacity var(--smooth), transform var(--smooth), visibility var(--smooth),
         background var(--fast), color var(--fast);
 }
@@ -1202,9 +1220,24 @@ body.js .reveal.is-in {
 }
 
 @media (max-width: 860px) {
+    body.has-cursor,
+    body.has-cursor a,
+    body.has-cursor button {
+        cursor: auto;
+    }
+
+    body.has-cursor .cursor-dot,
+    body.has-cursor .cursor-ring {
+        display: none;
+    }
+
     .hero {
         min-height: auto;
         padding-bottom: 2.2rem;
+    }
+
+    .hero-line .char {
+        font-size: clamp(2.65rem, 14vw, 8rem);
     }
 
     .hero-mid {
@@ -1247,6 +1280,8 @@ body.js .reveal.is-in {
         font-weight: 800;
         letter-spacing: -0.04em;
         padding: 0.55rem 0;
+        opacity: 1;
+        color: var(--ink);
     }
 
     .nav-toggle {

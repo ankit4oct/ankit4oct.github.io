@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mouse = { x: 0, y: 0 };
     const ring = { x: 0, y: 0 };
 
-    if (finePointer && !reduceMotion && cursorDot && cursorRing) {
+    if (finePointer && !reduceMotion && cursorDot && cursorRing && window.innerWidth > 860) {
         body.classList.add('has-cursor');
 
         window.addEventListener('mousemove', (e) => {
@@ -143,8 +143,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let currentIndex = '01';
         let currentId = '';
+        const marker = window.innerHeight * 0.28;
         indexedSections.forEach((section) => {
-            if (section.offsetTop - 140 <= scrollY) {
+            const top = section.getBoundingClientRect().top;
+            if (top <= marker) {
                 currentIndex = section.getAttribute('data-index') || currentIndex;
                 currentId = section.id;
             }
@@ -182,6 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navToggle.addEventListener('click', () => {
             const open = navLinksEl.classList.toggle('open');
             navToggle.classList.toggle('active', open);
+            navbar.classList.toggle('menu-open', open);
             navToggle.setAttribute('aria-expanded', String(open));
         });
 
@@ -189,6 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
                 navLinksEl.classList.remove('open');
+                navbar.classList.remove('menu-open');
                 navToggle.setAttribute('aria-expanded', 'false');
             });
         });
