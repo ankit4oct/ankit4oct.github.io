@@ -487,20 +487,25 @@ html.js .preloader {
     font-family: var(--font-display);
     font-weight: 800;
     line-height: 0.78;
-    letter-spacing: -0.07em;
+    letter-spacing: 0;
     color: var(--ink);
 }
 
 .hero-line {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
     width: 100%;
     overflow: hidden;
+    padding-inline: 0.12rem;
 }
 
 .hero-line .char {
-    display: inline-block;
-    font-size: clamp(3.4rem, 16vw, 13.5rem);
+    display: block;
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: center;
+    font-size: clamp(2.15rem, calc((100vw - 2 * var(--gutter)) / 7), 13.5rem);
 }
 
 body.js .hero-line .char {
@@ -1322,7 +1327,7 @@ body.js .reveal.is-in {
     }
 
     .hero-line .char {
-        font-size: clamp(2.65rem, 14vw, 8rem);
+        font-size: clamp(2.05rem, calc((100vw - 2 * var(--gutter)) / 7.15), 7.5rem);
     }
 
     .hero-mid {
