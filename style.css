@@ -685,6 +685,29 @@ body.js.is-ready .hero-foot {
     white-space: nowrap;
 }
 
+.word-head {
+    display: grid;
+    gap: 0.55rem;
+    margin-bottom: clamp(2.2rem, 5vw, 4rem);
+}
+
+.word-kicker {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.word-head h2 {
+    font-family: var(--font-display);
+    font-size: clamp(3.4rem, 12vw, 8.5rem);
+    font-weight: 800;
+    line-height: 0.82;
+    letter-spacing: -0.07em;
+    color: var(--ink);
+}
+
 .split-head-light .split-left,
 .split-head-light .split-right {
     color: var(--cream);
@@ -1340,7 +1363,7 @@ body.js .reveal.is-in {
         grid-column: 1;
     }
 
-    .split-kicker {
+    .split-head .split-kicker {
         grid-column: 2;
         grid-row: 1;
         justify-self: end;
