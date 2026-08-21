@@ -466,7 +466,9 @@ html.js .preloader {
     justify-content: flex-end;
     padding: calc(5.4rem + env(safe-area-inset-top)) var(--gutter) 2.4rem;
     position: relative;
-    overflow: hidden;
+    overflow-x: clip;
+    overflow-y: hidden;
+    container-type: inline-size;
 }
 
 .hero::before {
@@ -496,16 +498,31 @@ html.js .preloader {
     justify-content: space-between;
     align-items: baseline;
     width: 100%;
-    overflow: hidden;
-    padding-inline: 0.12rem;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: visible;
+    overflow-y: hidden;
 }
 
 .hero-line .char {
     display: block;
-    flex: 1 1 0;
-    min-width: 0;
+    flex: 0 0 auto;
     text-align: center;
-    font-size: clamp(2.15rem, calc((100vw - 2 * var(--gutter)) / 7), 13.5rem);
+    font-size: clamp(1.7rem, 12cqi, 12.5rem);
+}
+
+.hero-name-last .char {
+    font-size: clamp(1.55rem, 10.4cqi, 10.8rem);
+}
+
+@supports not (font-size: 1cqi) {
+    .hero-line .char {
+        font-size: clamp(1.7rem, 10vw, 12.5rem);
+    }
+
+    .hero-name-last .char {
+        font-size: clamp(1.55rem, 8.6vw, 10.8rem);
+    }
 }
 
 body.js .hero-line .char {
@@ -1327,7 +1344,21 @@ body.js .reveal.is-in {
     }
 
     .hero-line .char {
-        font-size: clamp(2.05rem, calc((100vw - 2 * var(--gutter)) / 7.15), 7.5rem);
+        font-size: clamp(1.55rem, 11.2cqi, 6.5rem);
+    }
+
+    .hero-name-last .char {
+        font-size: clamp(1.4rem, 9.6cqi, 5.8rem);
+    }
+
+    @supports not (font-size: 1cqi) {
+        .hero-line .char {
+            font-size: clamp(1.55rem, 9.2vw, 6.5rem);
+        }
+
+        .hero-name-last .char {
+            font-size: clamp(1.4rem, 8vw, 5.8rem);
+        }
     }
 
     .hero-mid {
