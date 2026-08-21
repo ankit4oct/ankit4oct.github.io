@@ -275,20 +275,14 @@ html.js .preloader {
     gap: 1rem;
     padding: 0.95rem var(--gutter);
     padding-top: max(0.95rem, env(safe-area-inset-top));
-    background: transparent;
-    mix-blend-mode: difference;
-    color: #fff;
-    transition: background var(--smooth);
+    background: rgba(239, 232, 220, 0.94);
+    backdrop-filter: blur(16px);
+    color: var(--ink);
+    border-bottom: 1px solid var(--line);
 }
 
 .navbar.menu-open {
-    mix-blend-mode: normal;
     background: var(--surface);
-    color: var(--ink);
-}
-
-.navbar.scrolled:not(.menu-open) {
-    background: transparent;
 }
 
 .nav-brand {
@@ -296,14 +290,13 @@ html.js .preloader {
     font-size: 1.15rem;
     font-weight: 800;
     letter-spacing: -0.04em;
-    color: inherit;
+    color: var(--ink);
     text-decoration: none;
     z-index: 2;
 }
 
 .nav-brand:hover {
-    color: inherit;
-    opacity: 0.7;
+    color: var(--accent);
 }
 
 .nav-index {
@@ -311,8 +304,7 @@ html.js .preloader {
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.12em;
-    color: inherit;
-    opacity: 0.7;
+    color: var(--muted);
     margin-right: auto;
     margin-left: 1.25rem;
 }
@@ -330,17 +322,15 @@ html.js .preloader {
 .nav-link {
     font-size: 0.82rem;
     font-weight: 500;
-    color: inherit;
+    color: var(--ink-soft);
     text-decoration: none;
     padding: 0.45rem 0.75rem;
-    opacity: 0.72;
-    transition: opacity var(--fast);
+    transition: color var(--fast);
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: inherit;
-    opacity: 1;
+    color: var(--accent);
 }
 
 .nav-toggle {
@@ -357,7 +347,7 @@ html.js .preloader {
 .nav-toggle span {
     width: 22px;
     height: 2px;
-    background: currentColor;
+    background: var(--ink);
     transition: transform var(--fast), opacity var(--fast);
 }
 
@@ -687,8 +677,8 @@ body.js.is-ready .hero-foot {
 
 .word-head {
     display: grid;
-    gap: 0.55rem;
-    margin-bottom: clamp(2.2rem, 5vw, 4rem);
+    gap: 1rem;
+    margin-bottom: clamp(2.4rem, 5vw, 3.5rem);
 }
 
 .word-kicker {
@@ -701,10 +691,10 @@ body.js.is-ready .hero-foot {
 
 .word-head h2 {
     font-family: var(--font-display);
-    font-size: clamp(3.4rem, 12vw, 8.5rem);
+    font-size: clamp(3.2rem, 11vw, 7.5rem);
     font-weight: 800;
-    line-height: 0.82;
-    letter-spacing: -0.07em;
+    line-height: 0.95;
+    letter-spacing: -0.06em;
     color: var(--ink);
 }
 
@@ -715,10 +705,18 @@ body.js.is-ready .hero-foot {
 
 .section-intro {
     max-width: 36rem;
-    margin: -1.5rem auto 3rem;
+    margin: 0 auto 3rem;
     text-align: center;
     font-size: 1.12rem;
     color: var(--muted);
+}
+
+.split-head + .section-intro {
+    margin-top: -1.5rem;
+}
+
+.word-head + .section-intro {
+    margin-top: 0;
 }
 
 .section-ink .section-intro {
@@ -1124,21 +1122,6 @@ body.js.is-ready .hero-foot {
 
 .footer {
     padding: 0 var(--gutter) calc(1.6rem + env(safe-area-inset-bottom));
-    overflow: hidden;
-}
-
-.footer-wordmark {
-    font-family: var(--font-display);
-    font-size: clamp(3.4rem, 16vw, 12rem);
-    font-weight: 800;
-    letter-spacing: -0.08em;
-    line-height: 0.8;
-    color: var(--ink);
-    text-align: center;
-    white-space: nowrap;
-    opacity: 0.12;
-    margin: 0.4rem 0 2rem;
-    user-select: none;
 }
 
 .footer-content {
