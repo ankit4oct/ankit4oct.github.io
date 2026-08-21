@@ -8,6 +8,31 @@ document.addEventListener('DOMContentLoaded', () => {
     body.classList.add('js');
     let loaderGone = false;
 
+    const themeToggle = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+
+    function currentTheme() {
+        return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        if (themeToggle) {
+            const next = theme === 'dark' ? 'light' : 'dark';
+            themeToggle.setAttribute('aria-label', `Switch to ${next} mode`);
+            themeToggle.setAttribute('aria-pressed', String(theme === 'dark'));
+        }
+    }
+
+    applyTheme(currentTheme());
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            applyTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+        });
+    }
+
     function dismissLoader() {
         if (loaderGone) return;
         loaderGone = true;
