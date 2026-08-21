@@ -1079,6 +1079,10 @@ body.js.is-ready .hero-foot {
 /* ===================================
    Contact / footer
    =================================== */
+.contact-section {
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+}
+
 .contact-lede {
     max-width: 28rem;
     margin: 0 auto 2.2rem;
@@ -1091,18 +1095,22 @@ body.js.is-ready .hero-foot {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    padding: 1.4rem 0;
+    gap: 0.75rem;
+    padding: 1.2rem 0;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     color: var(--ink);
     text-decoration: none;
     font-family: var(--font-display);
-    font-size: clamp(1.15rem, 3.4vw, 2.4rem);
+    font-size: clamp(0.92rem, 4.4vw, 2.2rem);
     font-weight: 800;
     letter-spacing: -0.04em;
     overflow-wrap: anywhere;
     transition: color var(--fast), padding var(--smooth);
+}
+
+.contact-mail span {
+    min-width: 0;
 }
 
 .contact-mail:hover {
@@ -1111,6 +1119,7 @@ body.js.is-ready .hero-foot {
 }
 
 .contact-mail i {
+    flex-shrink: 0;
     font-size: 0.55em;
     transform: rotate(-45deg);
     transition: transform var(--fast);
@@ -1120,21 +1129,9 @@ body.js.is-ready .hero-foot {
     transform: rotate(-45deg) translate(4px, 0);
 }
 
-.footer {
-    padding: 0.5rem var(--gutter) calc(1.6rem + env(safe-area-inset-bottom));
-}
-
-.footer-content {
-    max-width: var(--container);
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 1.2rem;
-    border-top: 1px solid var(--line);
-}
-
 .footer-copy {
+    margin-top: 1rem;
+    text-align: center;
     font-size: 0.85rem;
     color: var(--muted);
 }
