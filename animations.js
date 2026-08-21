@@ -22,17 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
         dismissLoader();
     } else {
         body.classList.add('is-loading');
-        const start = performance.now();
-        const finish = () => {
-            const wait = Math.max(0, 900 - (performance.now() - start));
-            window.setTimeout(dismissLoader, wait);
-        };
-        if (document.readyState === 'complete') {
-            finish();
-        } else {
-            window.addEventListener('load', finish, { once: true });
-        }
-        window.setTimeout(dismissLoader, 2200);
+        window.setTimeout(dismissLoader, 750);
+        window.setTimeout(dismissLoader, 1600);
     }
 
     let lenis = null;
