@@ -29,7 +29,6 @@
     --shadow: rgba(23, 32, 43, 0.18);
     --grain-opacity: 0.04;
     --grain-blend: multiply;
-    --cursor-ring: #17202b;
     --preloader-track: rgba(243, 239, 230, 0.18);
 }
 
@@ -60,7 +59,6 @@
     --shadow: rgba(0, 0, 0, 0.45);
     --grain-opacity: 0.07;
     --grain-blend: overlay;
-    --cursor-ring: #ece7dc;
     --preloader-track: rgba(236, 231, 220, 0.18);
 }
 
@@ -130,12 +128,6 @@ body.is-loading {
         border-color 0.4s var(--ease);
 }
 
-body.has-cursor,
-body.has-cursor a,
-body.has-cursor button {
-    cursor: none;
-}
-
 a {
     color: var(--accent);
     text-decoration-thickness: 1px;
@@ -170,77 +162,6 @@ ol {
     opacity: var(--grain-opacity);
     mix-blend-mode: var(--grain-blend);
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* ===================================
-   Custom cursor
-   =================================== */
-.cursor-dot,
-.cursor-ring {
-    display: none;
-}
-
-body.has-cursor .cursor-dot,
-body.has-cursor .cursor-ring {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 9999;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.cursor-dot {
-    width: 7px;
-    height: 7px;
-    background: var(--accent);
-    z-index: 10000;
-}
-
-.cursor-ring {
-    width: 36px;
-    height: 36px;
-    border: 1px solid var(--cursor-ring);
-    transition: width 0.28s var(--ease), height 0.28s var(--ease),
-        background 0.28s var(--ease), border-color 0.28s var(--ease),
-        mix-blend-mode 0.28s var(--ease);
-    mix-blend-mode: multiply;
-}
-
-[data-theme="dark"] .cursor-ring,
-[data-theme="dark"] body.has-cursor.cursor-hover .cursor-ring {
-    mix-blend-mode: normal;
-}
-
-body.has-cursor.cursor-hover .cursor-ring {
-    width: 72px;
-    height: 72px;
-    background: var(--accent);
-    border-color: var(--accent);
-    mix-blend-mode: multiply;
-}
-
-body.has-cursor.cursor-view .cursor-ring {
-    width: 88px;
-    height: 88px;
-    background: var(--ink);
-    border-color: var(--ink);
-    mix-blend-mode: normal;
-}
-
-body.has-cursor.cursor-view .cursor-ring::after {
-    content: "View";
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    color: var(--surface);
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
 }
 
 /* ===================================
@@ -1333,17 +1254,6 @@ body.js .reveal.is-in {
 }
 
 @media (max-width: 860px) {
-    body.has-cursor,
-    body.has-cursor a,
-    body.has-cursor button {
-        cursor: auto;
-    }
-
-    body.has-cursor .cursor-dot,
-    body.has-cursor .cursor-ring {
-        display: none;
-    }
-
     .hero {
         min-height: auto;
         padding-bottom: 2.2rem;
