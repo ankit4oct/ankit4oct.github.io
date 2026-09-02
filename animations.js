@@ -66,41 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(raf);
     }
 
-    const cursorDot = document.getElementById('cursor-dot');
-    const cursorRing = document.getElementById('cursor-ring');
-    const mouse = { x: 0, y: 0 };
-    const ring = { x: 0, y: 0 };
-
-    if (finePointer && !reduceMotion && cursorDot && cursorRing && window.innerWidth > 860) {
-        body.classList.add('has-cursor');
-
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-            cursorDot.style.transform = `translate(${mouse.x}px, ${mouse.y}px) translate(-50%, -50%)`;
-        }, { passive: true });
-
-        function followCursor() {
-            ring.x += (mouse.x - ring.x) * 0.16;
-            ring.y += (mouse.y - ring.y) * 0.16;
-            cursorRing.style.transform = `translate(${ring.x}px, ${ring.y}px) translate(-50%, -50%)`;
-            requestAnimationFrame(followCursor);
-        }
-        followCursor();
-
-        document.querySelectorAll('a, button, [data-cursor]').forEach((el) => {
-            el.addEventListener('mouseenter', () => {
-                body.classList.add('cursor-hover');
-                if (el.getAttribute('data-cursor') === 'view') {
-                    body.classList.add('cursor-view');
-                }
-            });
-            el.addEventListener('mouseleave', () => {
-                body.classList.remove('cursor-hover', 'cursor-view');
-            });
-        });
-    }
-
     if (finePointer && !reduceMotion) {
         document.querySelectorAll('.magnetic').forEach((el) => {
             el.addEventListener('mousemove', (e) => {
